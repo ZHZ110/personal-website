@@ -1,0 +1,814 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Zhiyi's Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="images/profile-pic.jpg" alt="" /></span>
+					<h1 id="logo"><a href="#">Zhiyi Zhan</a></h1>
+					<p> Video game developer from DigiPen <br />
+						Banner is a screenshot of my first ever game project "Monster Town"</p>
+					<p style = " font-size:16px; "> Code up in https://github.com/ZHZ110/cs1666-Team-monster_town</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#one" class="active">About me</a></li>
+						<li><a href="#two">Game AI Projects</a></li>
+						<li><a href="#three">Game Engine Projects</a></li>
+						<li><a href="#four">Graphics Projects</a></li>
+						<li><a href="#five">Miscellaneous</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/zhiyi-zhan-88670b183/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+						<li><a href="https://github.com/ZHZ110" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="mailto:zoeyzhang442@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="image main" data-position="center">
+									<img src="images/banner.png" alt="" />
+								</div>
+								<div class="container">
+									<header class="major">
+										<h2>My Portfolio</h2>
+										<p>A showcase for my projects and skills</a>.</p>
+									</header>
+									<p> Hello, my name is Zhiyi, and I'm a graduate student in Computer Science at DigiPen Institute of Technology, concentrating on Game AI. At DigiPen, I've developed game AI structures such as behavior trees and nav-mesh, and I designed and implemented a scripting system to integrate Lua into our team’s custom engine. Recently, I've expanded my interests into graphics, focusing on ray tracing and real-time rendering.
+
+										My passion for game development began at the University of Pittsburgh where I led my team to successfully simulate a small town similar to Pokémon Ruby/Sapphire using Rust and SDL. It was a pivotal moment for me, sparking an interest that led me to DigiPen. 
+										
+										
+									</p>
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two">
+								<div class="container">
+									<h3>My Game AI Projects</h3>
+									<p>I've worked on several topics relating to game AI, and as a TA, listed below</p>
+									<ul class="feature-icons">
+										<li class="icon solid fa-cubes">Behavior Trees</li>
+										<li class="icon solid fa-cubes">A* Pathfinding</li>
+										<li class="icon solid fa-cubes">Terrain Analysis</li>
+										<li class="icon solid fa-cubes">Navmesh Generation</li>
+									</ul>
+									<h4>Behavior Trees</h4>
+									<p>For the behavior tree project, I decided to create a "chaser-dodger-protector" game involving 4 agents. It was my first experience using 
+										behavior tree components such as selectors, repeater nodes and interrupter nodes.
+									</p>
+									<article>
+										<video width = "720" height = "480" controls>
+											<source src = "videos/project1-behavior-trees.mp4">
+											Your browser does not support the video tag
+										</video>
+										<div class="inner">
+											<h5>chaser-dodger-protector simulator</h5>
+											<p>The red agent is the indicator chicken,which can be controlled by mouse click, and it will also follow the hen(yellow agent). 
+												The black agent is the eagle, it can catch and eat the target chicken(blue agent), will make a munch sound when it does, it can also dodge the hen. It mainly
+												follows the target chicken(blue), if it approaches the indicator chicken(red), the indicator chicken can get eaten too(munch sound).
+												The yellow agent is the hen, it will automatically follow and try to approach the eagle. When the eagle is approached, it will be frozen for a random
+												amount of time.
+												If the target chicken has been eaten too many times(the munching sound), the indicator chicken will turn white.</p>
+										</div>
+									</article>
+									<h4>Try Implementing Behavior Tree Myself</h4>
+									<article>
+										<a href="#" class="image"><img src="images/behavior-tree-simple-structure.png" alt="" /></a>
+										<div class="inner">
+											<p>I have also tried to implement behavior tree in our custom engine --- a simple one, with a root node, a sequencer and two leaf nodes.
+												The two leaf nodes are called Leaf_MoveToTarget and Leaf_PlaySound, and executed sequentially in scripts, as shown in the demo and the print statements in
+												the console. The way the behavior tree update itself is through its tick function. The tick function works with the status of a given node in order to determine 
+												what function will be performed next, what will its children's status be, and whether or not their children gets tick-ed. </p>
+										</div>
+									</article>
+									<video width = "720" height = "480" controls>
+										<source src = "videos/behavior-tree-demo.mp4">
+										Your browser does not support the video tag
+									</video>
+									<h4>A* Pathfinding</h4>
+									<p>
+										I implemented A* pathfinding on a grid-based map, which passed all the tests for optimlity. In addition, I used the Catmull-Rom spline
+										and rubberbanding to smooth out the path. The yellow and blue colored grids shows if it's on either the openList or the closed list during the process.
+									</p>
+									<video width = "720" height = "480" controls>
+										<source src = "videos/A-star tests.mp4">
+										Your browser does not support the video tag
+									</video>
+									<h4>Terrain Analysis</h4>
+									<p>
+										For terrain analysis, I started by working on different layers of the map, including visibility --- how many squares 
+										are visible, openness layer --- proximity to static obstacles, cover layer --- locations where AI can take cover form
+										gunfire, line of sight calculation. All of these layers combined will give a desirability layer, which is especially useful
+										for game AI in FPS games. Here, I'm using it for a hide and seek game on grid-based maps.
+									</p>
+									<a href="#" class="image"><img src="images/terrain-analysis-openness.png" alt="" width="720" height="480"/></a>
+									<div class="inner">
+										<p>openness map example</p>
+									</div>
+									<a href="#" class="image"><img src="images/terrain-analysis-visibility.png" alt="" width="720" height="480"/></a> 
+									<div class="inner">
+										<p>visiblity map example</p>
+									</div>
+									<video width = "720" height = "480" controls>
+										<source src = "videos/hide_and_seek_terrain_analysis.mp4">
+										Your browser does not support the video tag
+									</video>
+									<p>Hide and seek demonstration</p>
+									<h4>Navmesh generation</h4>
+									<p>For our navmesh generation research project, the map is no longer grid-based. The AI character can be anywhere on the map aside from 
+										the obstacles. Here we used the ear-clipping method for the triangulation of the walkable area. For the pathfinding on this map, we use 
+										a modified A* pathfinding method to traverse on the triangulated area. This is a group project, but I created the basic triangulation myself on the class framework.
+									</p>
+									<a href="#" class="image"><img src="images/triangulation_example.png" alt="" width="720" height="480" /></a>
+									<div class="inner">
+										<p>basic triangulation demo</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- three -->
+						 <section id="three">
+							<div class="container">
+								<h3>Game Engine Projects</h3>
+								<h4>3D Game Engine Development</h4>
+								<p>This is a team project. Programming wise, I work as the scripting and AI programmer. I've also worked 
+									on asset loading and game engine structure building. For a secondary role, I'm also the producer of the team.
+									Here's a demo of the engine, but most of my work lies in the backend.
+								</p>
+								<video width = "720" height = "480" controls>
+									<source src = "videos/gam550-engine-demo.mp4">
+									Your browser does not support the video tag
+								</video>
+								<p> For scripting, I used sol2 library to bind Lua with c++, so that we can use Lua to do scripting. The point of having
+									scripting available in our engine is for faster prototyping, avoiding compiling the whole engine when we do the fine tuning
+									and making small adjustments for our final game. To accomplish this, I built a whole scripting system with script components for 
+									both the scene and behaviors(for the behavior tree that was described in Game AI projects). 
+								</p>
+								<p> For asset loading and game engine structure design, I used assimp for 3D asset loading and rapidjson for serialization and 
+									deserialization. In addition, I have asset loading on a separate thread. For the game engine structure, I'm in charge of implementing 
+									the game object factory and game objects themselves. For optimization, I made the refwrapper class in order to store the collection 
+									of game objects as references instead of pointers so that it would avoid jumps as we update the components of the game objects. 
+									I'm also in charge of the audio part, which I used the FMOD library to load and play both background music and sound effects. It can be 
+									turned up, turned down and turned off with the UI.
+								</p>
+								<p> As the producer of the team, I organize 90% of our meetings as the producer. I reserved the room for our in-person meeting and made 
+									checklists for what we need to accomplish for our meeting. Mainly, I made sure I knew what everybody was doing and their plans in order 
+							        to decide our general direction.</p>
+								<p>Here's a sorted list of details of all the personal contributions I've made:</p>
+								<table>
+									<tr>
+									  <td><img src="images/listing_1.png" alt=""></td>
+									  <td><img src="images/listing_2.png" alt=""></td>
+									</tr>
+								</table>
+								<h3>3D Game Development --- MiniGamers</h3>
+								<p>This is the game that we are building using the game engine we built last semester. I am still assuming the 
+									role of producer, which has become more involved since the direction of our development needs to be steered even more often: 
+									For example, I decided that after our alpha presentation, based on the "fun factor" of our game is the interaction between the 
+									character and the surroundings. The "feel" of this is quite crucial to our game, which means we should get this out as soon as 
+									we can so that we can have the time to adjust. That means instead of 2d rendering and 2d physics, we should be focusing on animation 
+									first and how the 3d physics works with that. 
+								</p>
+								<p> A demo of the current stage of development: </p>
+								<video width = "720" height = "480" controls>
+									<source src = "videos/gam551-current-stage.mp4">
+									Your browser does not support the video tag
+								</video>
+								<p>The capsule in the demo is the current form of the player, which is controlled by arrow keys through the input system. 
+									Its collision direction with the joystick (the other non-moving capsule with a sphere on top) determines the rotation angle of the 
+									square on the 2d screen. There's also a green sphere that drops onto the platform. It follows gravity, has a collider attached to it,
+									just not collidable with the player, since it is a test object to make sure the physics system works correctly with Lua. 
+								</p>
+								<p>At this stage for me as the scripting programmer, I've added bindings to all the necessary parts of the engine including the input system, 
+									scene2D (the 2d screen) and the physics system. For the physics system, due to its complexity, I've added a wrapper class (physics component)
+									to avoid the script getting too involved in the calculations of the colliders. I've also used sol functions for callback in lua so that the 
+									script can capture the collision information at the right time. On the lua side, I've implemented the game state stack, event manager and 
+									trigger system in Lua. They are going to be used in game states, collision event management later.
+								</p>
+							</div>
+						 </section>
+						
+						<!-- four -->
+							<section id="four">
+								<div class="container">
+									<h3>Graphics Projects</h3>
+									<p>The following projects are finished during my MSCS program</p>
+									<h4>Advanced Computer Graphics Framework</h4>
+									<p> This project introduced me to the graphics pipeline, the idea of shaders and GPU, as well as 
+										basic rendering techniques
+									</p>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/cs541-p1result.png" alt="" /></a>
+											<div class="inner">
+												<p>Basic 3D transformations such as rotation, scaling and perspective transformation, interactive scene viewing, 
+													game-like navigation.</p>
+											</div>
+										</article>
+									</div>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/cs541-p2result.png" alt="" /></a>
+											<div class="inner">
+												<p>Micro-facet BRDF lighting in GLSL shader program. Pass lighting values from the application to the shaders. Then use 
+													micro-facet BRDF calculation in GLSL functions.
+												</p>
+											</div>
+										</article>
+									</div>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/cs541-p3result.png" alt="" /></a>
+											<div class="inner">
+												<p>Textures on all surfaces including skydome. Procedures include texture coordinate functions(scaling, rotation, translations), 
+													procedure textures, conditinal processing, as well as normal map for water ripples.
+												</p>
+											</div>
+										</article>
+									</div>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/cs541-p4result.png" alt="" /></a>
+											<div class="inner">
+												<p>Shadows (using a two-pass shadow map algorithm). Removed shadow acne by adding shadow depth offset and front face culling while 
+													while generating the shadow map. Used texture debugging for verifying generated shadow map.
+												</p>
+											</div>
+										</article>
+									</div>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/cs541-p5result.png" alt="" /></a>
+											<div class="inner">
+												<p>Reflections using dual-paraboloid map. The teapot reflect all the graphical features including lighting, shadows, etc.</p>
+											</div>
+										</article>
+									</div>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/cs541-p6result.png" alt="" /></a>
+											<div class="inner">
+												<p>Image Based Lighting with global tone-mapping. </p>
+											</div>
+										</article>
+									</div>
+										<article>
+											<h4>Ray-Tracing Framework</h4>
+											<div class="features">
+												<article>
+													<table>
+														<tr>
+														  <td><img src="images/cs500-p1_1.png" alt="" width="480" height="360"></td>
+														  <td><img src="images/cs500-p1_2.png" alt="" width="480" height="360"></td>
+														</tr>
+													</table>
+													<p> The raytracer accepted a scene file. It's read and parsed to build an internal representation
+														of the scene, including geometric shapes like sphere, cylinder(edges and legs of the table), plane(table top),
+														the stanford bunny (loaded 3d model). Then the scene was ray-casted, outputted into an HDR file. Above 
+														shows result of both the normal of the surfaces and the distance --- the closer the object is to the eye, the 
+														darker it gets.
+													</p>
+												</article>
+											</div>
+											<div class="features">
+												<article>
+													<a href="#" class="image"><img src="images/cs500-p2.png" alt="" /></a>
+													<div class="inner">
+														<p> Fully featured path-tracer and basic BRDF lighting calculation based on the result produced from the first project
+															(has noise because of the lack of time to run the raytracer).  </p>
+													</div>
+												</article>
+											</div>
+											<div class="features">
+												<article>
+													<a href="#" class="image"><img src="images/cs500-p3.png" alt="" /></a>
+													<div class="inner">
+														<p> Enhanced the very minimal diffuse-only BRDF to include the full-micro-facet BRDF in the lighting equation(Need to
+															sample BRDF here). The interaction of a ray with a surface can now result in either a diffuse interaction, or a 
+														    reflection interaction, and the path-tracing loop must now choose (with a known probability) between the two. </p>
+													</div>
+												</article>
+											</div>
+											<div class="features">
+												<article>
+													<a href="#" class="image"><img src="images/cs500-p4.png" alt="" /></a>
+													<div class="inner">
+														<p> Enhance the reflective micro-facet BRDF to include transmission across the micro-faceted surface into and through 
+															objects. 
+														</p>
+													</div>
+												</article>
+											</div>
+											<div class="features">
+												<article>
+													<table>
+														<tr>
+															<td><img src="images/cs500-p5-dof.png" alt="" width="480" height="360"></td>
+															<td><img src="images/cs500-p5-motion-blur.png" alt="" width="480" height="360"></td>
+													  	</tr>
+													</table>
+													<p> Enhanced path-tracing with depth of field and motion blur. Left --- depth of field (the orange sphere
+														is in focus). Right --- motion blur(linear motion)
+													</p>
+												</article>
+											</div>
+										</article>
+									<article>
+										<h4>Real-time Ray-Tracing Framework</h4>
+										<p>A further step into Ray-tracing and first step getting into Vulkan</p>
+										<div class="features">
+											<article>
+												<a href="#" class="image"><img src="images/cs599_p2.png" alt="" /></a>
+												<div class="inner">
+													<p> Get through the startup steps of vulkan, and use the scanline algorithm to display a real-time scene
+													</p>
+												</div>
+											</article>
+										</div>
+										<div class="features">
+											<article>
+												<a href="#" class="image"><img src="images/cs599_p3.png" alt="" /></a>
+												<div class="inner">
+													<p> Start with ray-casting, then extend to a full path-tracing algorithm to display the same real-time scene
+													</p>
+												</div>
+											</article>
+										</div>
+										<div class="features">
+											<article>
+												<video width = "560" height = "" controls>
+													<source src = "videos/cs599-p4.mp4">
+													Your browser does not support the video tag
+												</video>
+												<p> A relatively small step beyond ray casting. In path tracing, single ray becomes a path of ray traced from the eye out into
+									            the scene through multiple bounces until a light is encountered (or a russian-rouelette test gives up). The video shows the 
+											    accumulation process of ray-tracing.</p>
+											</article>
+										</div>
+										<div class="features">
+											<article>
+												<video width = "560" height = "" controls>
+													<source src = "videos/cs599-p6.mp4">
+													Your browser does not support the video tag
+												</video>
+												<p> Use history tracking and À-Trous algorithm to further improve the real-time ray-tracing scene. History tracking reaches through
+													the past to retrieve the running average from its position in the previous frame. À-Trous algorithm removes the noise from previous buildup.
+												</p>
+											</article>
+										</div>
+									</article>
+									<article>
+										<h4>Advanced Real-time Rendering</h4>
+										<p>Multiple real-time rendering techniques --- getting deeper into the graphics pipeline. Framework using openGL</p>
+										<div class="features">
+											<article>
+												<a href="#" class="image"><img src="images/cs562-p1.png" alt="" /></a>
+												<div class="inner">
+													<p> Implemented deferred shading based on previous project. Ending scene look the same as before, but an extra g-buffer pass is added to allow for multiple local lights.
+														Picture shows the normal that gets stored in the g-buffer pass.
+													</p>
+												</div>
+											</article>
+										</div>
+										<div class="features">
+											<article>
+												<table>
+													<tr>
+														<td><img src="images/cs562-p2-1.png" alt="" width="480" height="420"></td>
+														<td><img src="images/cs562-p2-2.png" alt="" width="480" height="420"></td>
+													  </tr>
+												</table>
+												<p> Moment shadow map algorithm implemented on top of a traditional shadow map, as well
+													as a GPU filter pass using convolution blur in between the generation of the moment shadow map and its use. Images shown with blurred shadows.
+												</p>
+											</article>
+										</div>
+										<div class="features">
+											<article>
+												<a href="#" class="image"><img src="images/cs562-p3.png" alt="" /></a>
+												<div class="inner">
+													<p> Enhanced the project with physically based lighting, image based lighting and global tone-mapping.
+													</p>
+												</div>
+											</article>
+										</div>
+										<div class="features">
+											<article>
+												<table>
+													<tr>
+														<td><img src="images/cs562-p4-1.png" alt="" width="480" height="420"></td>
+														<td><img src="images/cs562-p4-2.png" alt="" width="480" height="420"></td>
+													  </tr>
+												</table>
+												<p> Adding ambient occlusion with a bilateral filter as an edge-aware blur to smooth out the noise in the 
+													calculated ambient occlusion factor.  Applying the resulting ambient occlusion factor to the 
+													ambient light, not to any direct light calculations., resulting in an approximation of how bright light should be at different parts 
+													of a visible surface.
+												</p>
+											</article>
+										</div>
+									</article>
+								</div>
+							</section>
+
+						<!-- Four -->
+							<section id="five">
+								<div class="container">
+									<h3>Contact Me</h3>
+									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+									<form method="post" action="#">
+										<div class="row gtr-uniform">
+											<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
+											<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
+											<div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
+											<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
+											<div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" class="primary" value="Send Message" /></li>
+													<li><input type="reset" value="Reset Form" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</div>
+							</section>
+
+						<!-- Five -->
+						<!--
+							<section id="five">
+								<div class="container">
+									<h3>Elements</h3>
+
+									<section>
+										<h4>Text</h4>
+										<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+										This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+										This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+										<hr />
+										<header>
+											<h4>Heading with a Subtitle</h4>
+											<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+										</header>
+										<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+										<header>
+											<h5>Heading with a Subtitle</h5>
+											<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+										</header>
+										<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+										<hr />
+										<h2>Heading Level 2</h2>
+										<h3>Heading Level 3</h3>
+										<h4>Heading Level 4</h4>
+										<h5>Heading Level 5</h5>
+										<h6>Heading Level 6</h6>
+										<hr />
+										<h5>Blockquote</h5>
+										<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+										<h5>Preformatted</h5>
+										<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+									</section>
+
+									<section>
+										<h4>Lists</h4>
+										<div class="row">
+											<div class="col-6 col-12-xsmall">
+												<h5>Unordered</h5>
+												<ul>
+													<li>Dolor pulvinar etiam magna etiam.</li>
+													<li>Sagittis adipiscing lorem eleifend.</li>
+													<li>Felis enim feugiat dolore viverra.</li>
+												</ul>
+												<h5>Alternate</h5>
+												<ul class="alt">
+													<li>Dolor pulvinar etiam magna etiam.</li>
+													<li>Sagittis adipiscing lorem eleifend.</li>
+													<li>Felis enim feugiat dolore viverra.</li>
+												</ul>
+											</div>
+											<div class="col-6 col-12-xsmall">
+												<h5>Ordered</h5>
+												<ol>
+													<li>Dolor pulvinar etiam magna etiam.</li>
+													<li>Etiam vel felis at lorem sed viverra.</li>
+													<li>Felis enim feugiat dolore viverra.</li>
+													<li>Dolor pulvinar etiam magna etiam.</li>
+													<li>Etiam vel felis at lorem sed viverra.</li>
+													<li>Felis enim feugiat dolore viverra.</li>
+												</ol>
+												<h5>Icons</h5>
+												<ul class="icons">
+													<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+													<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+													<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+													<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+													<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+													<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
+												</ul>
+											</div>
+										</div>
+										<h5>Actions</h5>
+										<ul class="actions">
+											<li><a href="#" class="button primary">Default</a></li>
+											<li><a href="#" class="button">Default</a></li>
+											<li><a href="#" class="button alt">Default</a></li>
+										</ul>
+										<ul class="actions small">
+											<li><a href="#" class="button primary small">Small</a></li>
+											<li><a href="#" class="button small">Small</a></li>
+											<li><a href="#" class="button alt small">Small</a></li>
+										</ul>
+										<div class="row">
+											<div class="col-3 col-6-medium col-12-xsmall">
+												<ul class="actions stacked">
+													<li><a href="#" class="button primary">Default</a></li>
+													<li><a href="#" class="button">Default</a></li>
+													<li><a href="#" class="button alt">Default</a></li>
+												</ul>
+											</div>
+											<div class="col-3 col-6 col-12-xsmall">
+												<ul class="actions stacked">
+													<li><a href="#" class="button primary small">Small</a></li>
+													<li><a href="#" class="button small">Small</a></li>
+													<li><a href="#" class="button alt small">Small</a></li>
+												</ul>
+											</div>
+											<div class="col-3 col-6-medium col-12-xsmall">
+												<ul class="actions stacked">
+													<li><a href="#" class="button primary fit">Default</a></li>
+													<li><a href="#" class="button fit">Default</a></li>
+													<li><a href="#" class="button alt fit">Default</a></li>
+												</ul>
+											</div>
+											<div class="col-3 col-6-medium col-12-xsmall">
+												<ul class="actions stacked">
+													<li><a href="#" class="button primary small fit">Small</a></li>
+													<li><a href="#" class="button small fit">Small</a></li>
+													<li><a href="#" class="button alt small fit">Small</a></li>
+												</ul>
+											</div>
+										</div>
+									</section>
+
+									<section>
+										<h4>Table</h4>
+										<h5>Default</h5>
+										<div class="table-wrapper">
+											<table>
+												<thead>
+													<tr>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Price</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Item One</td>
+														<td>Ante turpis integer aliquet porttitor.</td>
+														<td>29.99</td>
+													</tr>
+													<tr>
+														<td>Item Two</td>
+														<td>Vis ac commodo adipiscing arcu aliquet.</td>
+														<td>19.99</td>
+													</tr>
+													<tr>
+														<td>Item Three</td>
+														<td> Morbi faucibus arcu accumsan lorem.</td>
+														<td>29.99</td>
+													</tr>
+													<tr>
+														<td>Item Four</td>
+														<td>Vitae integer tempus condimentum.</td>
+														<td>19.99</td>
+													</tr>
+													<tr>
+														<td>Item Five</td>
+														<td>Ante turpis integer aliquet porttitor.</td>
+														<td>29.99</td>
+													</tr>
+												</tbody>
+												<tfoot>
+													<tr>
+														<td colspan="2"></td>
+														<td>100.00</td>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+
+										<h5>Alternate</h5>
+										<div class="table-wrapper">
+											<table class="alt">
+												<thead>
+													<tr>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Price</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Item One</td>
+														<td>Ante turpis integer aliquet porttitor.</td>
+														<td>29.99</td>
+													</tr>
+													<tr>
+														<td>Item Two</td>
+														<td>Vis ac commodo adipiscing arcu aliquet.</td>
+														<td>19.99</td>
+													</tr>
+													<tr>
+														<td>Item Three</td>
+														<td> Morbi faucibus arcu accumsan lorem.</td>
+														<td>29.99</td>
+													</tr>
+													<tr>
+														<td>Item Four</td>
+														<td>Vitae integer tempus condimentum.</td>
+														<td>19.99</td>
+													</tr>
+													<tr>
+														<td>Item Five</td>
+														<td>Ante turpis integer aliquet porttitor.</td>
+														<td>29.99</td>
+													</tr>
+												</tbody>
+												<tfoot>
+													<tr>
+														<td colspan="2"></td>
+														<td>100.00</td>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+									</section>
+
+									<section>
+										<h4>Buttons</h4>
+										<ul class="actions">
+											<li><a href="#" class="button primary">Primary</a></li>
+											<li><a href="#" class="button">Default</a></li>
+											<li><a href="#" class="button alt">Alternate</a></li>
+										</ul>
+										<ul class="actions">
+											<li><a href="#" class="button primary large">Large</a></li>
+											<li><a href="#" class="button">Default</a></li>
+											<li><a href="#" class="button alt small">Small</a></li>
+										</ul>
+										<ul class="actions fit">
+											<li><a href="#" class="button primary fit">Fit</a></li>
+											<li><a href="#" class="button fit">Fit</a></li>
+											<li><a href="#" class="button alt fit">Fit</a></li>
+										</ul>
+										<ul class="actions fit small">
+											<li><a href="#" class="button primary fit small">Fit + Small</a></li>
+											<li><a href="#" class="button fit small">Fit + Small</a></li>
+											<li><a href="#" class="button alt fit small">Fit + Small</a></li>
+										</ul>
+										<ul class="actions">
+											<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
+											<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+											<li><a href="#" class="button alt icon solid fa-check">Icon</a></li>
+										</ul>
+										<ul class="actions">
+											<li><span class="button primary disabled">Primary</span></li>
+											<li><span class="button disabled">Default</span></li>
+											<li><span class="button alt disabled">Alternate</span></li>
+										</ul>
+									</section>
+
+									<section>
+										<h4>Form</h4>
+										<form method="post" action="#">
+											<div class="row gtr-uniform">
+												<div class="col-6 col-12-xsmall">
+													<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+												</div>
+												<div class="col-6 col-12-xsmall">
+													<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+												</div>
+												<div class="col-12">
+													<select name="demo-category" id="demo-category">
+														<option value="">- Category -</option>
+														<option value="1">Manufacturing</option>
+														<option value="1">Shipping</option>
+														<option value="1">Administration</option>
+														<option value="1">Human Resources</option>
+													</select>
+												</div>
+												<div class="col-4 col-12-medium">
+													<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+													<label for="demo-priority-low">Low Priority</label>
+												</div>
+												<div class="col-4 col-12-medium">
+													<input type="radio" id="demo-priority-normal" name="demo-priority">
+													<label for="demo-priority-normal">Normal Priority</label>
+												</div>
+												<div class="col-4 col-12-medium">
+													<input type="radio" id="demo-priority-high" name="demo-priority">
+													<label for="demo-priority-high">High Priority</label>
+												</div>
+												<div class="col-6 col-12-medium">
+													<input type="checkbox" id="demo-copy" name="demo-copy">
+													<label for="demo-copy">Email me a copy of this message</label>
+												</div>
+												<div class="col-6 col-12-medium">
+													<input type="checkbox" id="demo-human" name="demo-human" checked>
+													<label for="demo-human">I am a human and not a robot</label>
+												</div>
+												<div class="col-12">
+													<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+												</div>
+												<div class="col-12">
+													<ul class="actions">
+														<li><input type="submit" value="Send Message" /></li>
+														<li><input type="reset" value="Reset" class="alt" /></li>
+													</ul>
+												</div>
+											</div>
+										</form>
+									</section>
+
+									<section>
+										<h4>Image</h4>
+										<h5>Fit</h5>
+										<span class="image fit"><img src="images/banner.jpg" alt="" /></span>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+											</div>
+										</div>
+										<h5>Left &amp; Right</h5>
+										<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+										<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+									</section>
+
+								</div>
+							</section>
+						-->
+
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
